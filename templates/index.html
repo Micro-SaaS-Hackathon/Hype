@@ -95,8 +95,42 @@
         </div>
     </section>
 
+<div style="margin:0; font-family:sans-serif; background:#f3f4f6; display:flex; justify-content:center; align-items:center; height:65vh;">
+<div style="background:#fff; padding:40px 30px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.1); width:100%; max-width:420px;">
+    <form action="" method="post" style="display:flex; flex-direction:column; gap:18px;">
+        {% csrf_token %}
+        <h3 style="margin:0; color:#16a34a; font-size:22px; text-align:center;">
+            <a href="https://opendata.az/" 
+                style="
+                    display:inline-block;
+                    padding:6px 12px;
+                    border-radius:6px;
+                    text-decoration:none;
+                    color:#055523;
+                    background:#f6fff8;
+                    border:1px solid #dfeee6;
+                    transition:all .2s ease;
+                "
+    onmouseover="this.style.transform='scale(1.05)'; this.style.color='#024017'; this.style.borderColor='#cfe5d7';"
+    onmouseout="this.style.transform='scale(1)'; this.style.color='#055523'; this.style.borderColor='#dfeee6';"
+    onmousedown="this.style.transform='scale(0.96)';"
+    onmouseup="this.style.transform='scale(1.05)';"
+    >
+    Opendata
+    </a> platformasında görmək istədiyiniz məlumat dəstinin adını daxil edin
+        </h3>
 
-
+      <label for="username" style="font-weight:600; color:#374151;">İstədiyiniz məlumat dəsti:</label>
+      <input type="text" id="username" name="formtext" required
+        style="padding:14px 12px; border:1px solid #d1d5db; border-radius:8px; font-size:15px; outline:none; transition:all .2s;">
+      
+      <button type="submit"
+        style="padding:14px; background:#16a34a; color:#fff; font-size:15px; font-weight:600; border:none; border-radius:8px; cursor:pointer; transition:background .2s;">
+        Göndər
+      </button>
+    </form>
+  </div>
+  </div>
 
     <section class="cards-section">
         <div class="container">

@@ -1,8 +1,14 @@
 from django.shortcuts import render
 from utils import analyse as anl
-from app.models import UserStatistic
+from app.models import UserStatistic, OpenData
 
 def index(request):
+    text = request.POST.get("formtext")
+
+    OpenData.objects.create(
+        text = text,
+    )
+
     return render(request, "index.html")
 
 def team(request):
@@ -43,7 +49,7 @@ def analyse(request, category):
     qiymet = request.POST.get("qiymet")
     iqlim = request.POST.get("iqlim")
     
-    # anl.analyse(category, sahe, torpaq, qiymet, iqlim)
+    anl.analyse(category, sahe, torpaq, qiymet, iqlim)
 
     UserStatistic.objects.create(
         user = user,
