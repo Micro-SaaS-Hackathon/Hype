@@ -1,0 +1,244 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmAZ - Kənd Təsərrüfatı Platforması</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        .opendata-form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f8fdf9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+        .opendata-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .opendata-form label {
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .opendata-form input[type="text"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .opendata-form input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .opendata-form button {
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .opendata-form button:hover {
+            background: #0056b3;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="{% url 'index' %}" class="logo">
+                    <div class="logo-icon">F</div>
+                    FarmAZ
+                </a>
+                <nav class="nav" id="nav">
+                    <a href="{% url 'index' %}">Ev</a>
+                    <a href="{% url 'about' %}">Haqqımızda</a>
+                    <a href="{% url 'news' %}">Xəbərlər</a>
+                </nav>
+                <div class="burger-menu" onclick="toggleNav()">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-image">
+                <div class="hero-overlay">
+                    <h1 class="hero-title">Fermerlər üçün kənd təsərrüfatının analiz platforması</h1>
+                    <p class="hero-subtitle">Azərbaycanda bir ilk!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="cards-section">
+        <div class="container">
+            <h2 class="section-title">Statistika (Bitkiçilik)</h2>
+            <div class="cards">
+                
+                <div class="card" onclick='window.location.href="{% url "statistics" category='butun_nov_terevez' %}"'>
+                    <div class="card-image" style="background-image: url('https://olke.az/file/articles/2022/12/26/1672050488_ovos.jpg')"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Bütün növ tərəvəzin istifadəsinin illik göstəriciləri</h3>
+                        <p class="card-text">2007–2023-cü illər üzrə statistika</p>
+                        <div class="card-meta">
+                            <a href="{% url 'statistics' category='butun_nov_terevez' %}" class="login-btn">Analiz et</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" onclick='window.location.href="{% url "statistics" category='kartof' %}"'>
+                    <div class="card-image" style="background-image: url('https://azertag.az/files/2017/2/1200x630/1500960413570943880_1200x630.jpg')"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">İllər üzrə Kartof ehtiyatları haqqında məlumatlar</h3>
+                        <p class="card-text">2007–2023-cü illər üzrə statistika</p>
+                        <div class="card-meta">
+                            <a href="{% url 'statistics' category='kartof' %}" class="login-btn">Analiz et</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" onclick='window.location.href="{% url "statistics" category='pomidor' %}"'>
+                    <div class="card-image" style="background-image: url('https://images.pexels.com/photos/4022083/pexels-photo-4022083.jpeg?cs=srgb&dl=pexels-karolina-grabowska-4022083.jpg&fm=jpg')"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">İllər üzrə Pamidor ehtiyatları haqqında məlumatlar</h3>
+                        <p class="card-text">2007–2023-cü illər üzrə statistika</p>
+                        <div class="card-meta">
+                            <a href="{% url 'statistics' category='pomidor' %}" class="login-btn">Analiz et</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" onclick='window.location.href="{% url "statistics" category='uzum' %}"'>
+                    <div class="card-image" style="background-image: url('https://eu2.contabostorage.com/71933ea89b5a4d0ca528a15679956e5d:azerbaijannews/uploads/img/posts/2022/09/05/16623811706401846230_1000x669%20(1)jpg-1662382926.jpg')"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">İllər üzrə Üzüm ehtiyatları haqqında məlumatlar</h3>
+                        <p class="card-text">2007–2023-cü illər üzrə statistika</p>
+                        <div class="card-meta">
+                            <a href="{% url 'statistics' category='uzum' %}" class="login-btn">Analiz et</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" onclick='window.location.href="{% url "statistics" category='qoz_findiq' %}"'>
+                    <div class="card-image" style="background-image: url('https://qebulol.az/wp-content/uploads/2025/05/findiq-1024x617.jpg')"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">İllər üzrə Qoz və Fındıq ehtiyatları haqqında məlumatlar</h3>
+                        <p class="card-text">2007–2023-cü illər üzrə statistika</p>
+                        <div class="card-meta">
+                            <a href="{% url 'statistics' category='qoz_findiq' %}" class="login-btn">Analiz et</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick='window.location.href="{% url "statistics" category='bugda' %}"'>
+                    <div class="card-image" style="background-image: url('https://images.pexels.com/photos/265216/pexels-photo-265216.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">İllər üzrə Buğda ehtiyatları haqqında məlumatlar</h3>
+                        <p class="card-text">2007–2023-cü illər üzrə statistika</p>
+                        <div class="card-meta">
+                            <a href="{% url 'statistics' category='bugda' %}" class="login-btn">Analiz et</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" onclick='window.location.href="{% url "statistics" category='bostan' %}"'>
+                    <div class="card-image" style="background-image: url(https://images.pexels.com/photos/326082/pexels-photo-326082.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">İllər üzrə Bostan məhsulları ehtiyatları haqqında məlumatlar</h3>
+                        <p class="card-text">2007–2023-cü illər üzrə statistika</p>
+                        <div class="card-meta">
+                            <a href="{% url 'statistics' category='bostan' %}" class="login-btn">Analiz et</a>
+                        </div>
+                    </div>
+                </div>  
+
+            </div>
+        </div>
+    </section>
+    <section class="cards-section">
+        <div class="container">
+            <h2 class="section-title">Statistika (Heyvandarlıq)</h2>
+            <div class="cards">
+
+                <div class="card" onclick='window.location.href="{% url "statistics" category='et_ve_et_mehsul'  %}"'>
+                    <div class="card-image" style="background-image: url(https://c1.wallpaperflare.com/preview/332/477/68/meat-lamb-t-bone-steak-hille-gourmets.jpg)"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">İllər üzrə Ət və ət məhsulları  ehtiyatları haqqında məlumatlar</h3>
+                        <p class="card-text">2007–2023-cü illər üzrə statistika</p>
+                        <div class="card-meta">
+                            <a href="{% url 'statistics' category='et_ve_et_mehsul' %}" class="login-btn">Analiz et</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" onclick='window.location.href="{% url "statistics" category='qoyun_keci' %}"'>
+                    <div class="card-image" style="background-image: url(https://www.todaypress.tv/uploads/news/68a71725dfa3c.webp)"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">İllər üzrə qoyun və keçi əti   ehtiyatları haqqında məlumatlar</h3>
+                        <p class="card-text">2007–2023-cü illər üzrə statistika</p>
+                        <div class="card-meta">
+                            <a href="{% url 'statistics' category='qoyun_keci' %}" class="login-btn">Analiz et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>FarmAZ</h4>
+                    <ul>
+                        <li><a href="{% url 'about' %}">Haqqımızda</a></li>
+                        <li><a href="{% url 'news' %}">Xəbərlər</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 FarmAz. Bütün hüquqlar qorunur. | Azərbaycanın #1 Kənd Təsərrüfatı Platforması</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+
+        window.addEventListener('resize', function() {
+            const nav = document.getElementById('nav');
+            if (window.innerWidth > 768) {
+                nav.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

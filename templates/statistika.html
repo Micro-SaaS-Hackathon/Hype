@@ -1,0 +1,253 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmAz - Statistika Paneli</title>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <link rel="stylesheet" href="{% static 'statisika.css' %}">
+    <link rel="icon" href="689ca7b0-31ad-4d1c-8f75-6f7ce3a99aaf.png">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>FarmAz Statistika Paneli</h1>
+            <p>Azərbaycanın kənd təsərrüfatı məhsulları üzrə ətraflı statistika və analiz</p>
+        </div>
+
+        <div class="stats-content">
+            <div class="year-navigation">
+                <button class="nav-btn" onclick="previousYear()" id="prevBtn">←Əvvəlki</button>
+                
+                <div class="year-display">
+                    <div class="current-year" id="currentYear">2023</div>
+                    <div class="year-range" id="yearRange">2023 - 2007 arası</div>
+                </div>
+                <button class="nav-btn" onclick="nextYear()" id="nextBtn">Sonrakı→</button>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-title">İlin əvvəlinə qalıq</div>
+                    <div class="metric-value" id="qaliq">0</div>
+                    <div class="metric-unit">ton</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">İstehsal</div>
+                    <div class="metric-value" id="istehsal">0</div>
+                    <div class="metric-unit">ton</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">İdxal</div>
+                    <div class="metric-value" id="idxal">0</div>
+                    <div class="metric-unit">ton</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Ehtiyatların cəmi</div>
+                    <div class="metric-value" id="ceml">0</div>
+                    <div class="metric-unit">ton</div>
+                </div>
+            </div>
+
+
+            <div class="chart-container">
+                <div class="chart-title">Son 5 il üzrə dinamika</div>
+                <div class="chart" id="chart"></div>
+            </div>      
+            
+            
+            <form method="post" action="{% url 'analyse' category=category %}">
+                {% csrf_token %}
+                <div class="sectionbody">
+                    <div class="form-grid">
+                        <div class="grid-item">
+                            <label for="s1">Ümumi sahə (hektar ilə)</label>
+                            <input name="sahe" type="number" id="s1">
+                        </div>
+                
+                        <div class="grid-item">
+                            <label for="s2">Torpaq növü</label>
+                            <select name="torpaq" id="s2">
+                                <option>Seçin</option>
+                                <option>Qara</option>
+                                <option>Gil</option>
+                                <option>Qum</option>
+                                <option>Çınqıl</option>
+                            </select>
+                        </div>
+                
+                        <div class="grid-item">
+                            <label for="s3">Məhsul üçün orta qiymət (₼/kq)</label>
+                            <input name="qiymet" type="number" id="s3">
+                        </div>
+                
+                        <div class="grid-item button-wrapper">
+                            <label for="s4">Bölgənin iqlim sinfi</label>
+                            <select name="iqlim" id="s4">
+                                <option>Seçin</option>
+                                <option>Quru</option>
+                                <option>Subtropik</option>
+                                <option>Mülayim</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <center>
+                    <button class="analysis-btn" id="analyseBtn">
+                        Ətraflı Analiz
+                    </button>
+                    <div id="loader" style="
+                        display: none;
+                        position: fixed;
+                        top: 0; left: 0;
+                        width: 100%; height: 100%;
+                        background-color: rgba(255,255,255,0.8);
+                        z-index: 9999;
+                        text-align: center;
+                        padding-top: 20%;
+                        font-size: 2rem;
+                        color: green;
+                    ">
+                        Zəhmət olmasa, cavab gələnə qədər gözləyin...
+                    </div>
+                </center> 
+            </form>
+            
+            
+            
+        </div>
+    </div>
+
+    
+
+    <script>
+        const minYear = 2007;
+        const maxYear = 2023;
+        let currentYear = 2023;
+        let currentCropData = null;
+
+        async function fetchCropData() {
+            try {
+                // ✅ API əvəzinə lokal CSV oxuyuruq
+                const response = await fetch("{{ data_path }}");
+                const dataText = await response.text();
+
+                const parsed = Papa.parse(dataText, { header: true, skipEmptyLines: true });
+                const rawData = parsed.data;
+
+                console.log("Dataset:", rawData);
+
+                const years = {};
+                rawData.forEach(row => {
+                    const indicator = row["Göstərici"].trim();
+
+                    for (let year = minYear; year <= maxYear; year++) {
+                        if (!years[year]) {
+                            years[year] = { qaliq: 0, istehsal: 0, idxal: 0, ceml: 0 };
+                        }
+
+                        const value = parseInt(row[year] || 0);
+
+                        if (indicator.startsWith("İlin əvvəlinə qalıq (ton)")) {
+                            years[year].qaliq = value;
+                        } else if (indicator.startsWith("İstehsal (ton)")) {
+                            years[year].istehsal = value;
+                        } else if (indicator.startsWith("İdxal (ton)")) {
+                            years[year].idxal = value;
+                        } else if (indicator.startsWith("Ehtiyatların cəmi (ton)")) {
+                            years[year].ceml = value;
+                        }
+                    }
+                });
+
+                return {
+                    years,
+                    analysis: "Pomidor məhsulu üzrə rəsmi statistika əsasında analiz.",
+                    recommendation: "Əkilməsi məsləhətlidir",
+                    reason: "Bazar tələbatı və məhsuldarlıq göstəriciləri əlverişlidir."
+                };
+
+            } catch (error) {
+                console.error("CSV oxuma xətası:", error);
+                return null;
+            }
+        }
+
+        // --- Mövcud funksiyalar ---
+        function updateDisplay() {
+            if (!currentCropData) return;
+
+            document.getElementById('currentYear').textContent = currentYear;
+            updateMetrics();
+            updateChart();
+            updateAnalysis();
+            updateNavigationButtons();
+        }
+
+        function updateMetrics() {
+            const yearData = currentCropData.years[currentYear];
+            document.getElementById('qaliq').textContent = numberFormat(yearData?.qaliq || 0);
+            document.getElementById('istehsal').textContent = numberFormat(yearData?.istehsal || 0);
+            document.getElementById('idxal').textContent = numberFormat(yearData?.idxal || 0);
+            document.getElementById('ceml').textContent = numberFormat(yearData?.ceml || 0);
+        }
+
+        function updateChart() {
+            const chart = document.getElementById('chart');
+            chart.innerHTML = '';
+
+            const years = [];
+            for (let i = 4; i >= 0; i--) {
+                const year = currentYear - i;
+                if (year >= minYear && year <= maxYear) years.push(year);
+            }
+
+            const values = years.map(y => currentCropData.years[y]?.istehsal || 0);
+            const maxValue = Math.max(...values);
+
+            years.forEach(year => {
+                const val = currentCropData.years[year]?.istehsal || 0;
+                const height = maxValue > 0 ? (val / maxValue) * 200 : 0;
+
+                const bar = document.createElement('div');
+                bar.className = year === currentYear ? 'bar current' : 'bar';
+                bar.style.height = height + 'px';
+                bar.innerHTML = `
+              <div class="bar-value">${numberFormat(val)}</div>
+              <div class="bar-label">${year}</div>
+            `;
+                bar.onclick = () => { currentYear = year; updateDisplay(); };
+                chart.appendChild(bar);
+            });
+        }
+        function updateNavigationButtons() {
+            document.getElementById('prevBtn').disabled = currentYear <= minYear;
+            document.getElementById('nextBtn').disabled = currentYear >= maxYear;
+        }
+
+        function previousYear() { if (currentYear > minYear) { currentYear--; updateDisplay(); } }
+        function nextYear() { if (currentYear < maxYear) { currentYear++; updateDisplay(); } }
+        function numberFormat(num) { return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') previousYear();
+            if (e.key === 'ArrowRight') nextYear();
+        });
+        document.getElementById("analyseBtn").addEventListener("click", function() {
+            document.getElementById("loader").style.display = "block";
+        });
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            currentCropData = await fetchCropData();
+            if (currentCropData) updateDisplay();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmAz - Haqqımızda</title>
+    <link rel="icon" href="689ca7b0-31ad-4d1c-8f75-6f7ce3a99aaf.png">
+    <link rel="stylesheet" href="{% static 'haqqimizda.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="FarmAz.html" class="logo">
+                    <div class="logo-icon">F</div>
+                    FarmAz
+                </a>
+                <nav class="nav" id="nav">
+                    <a href="{% url 'index' %}">Ev</a>
+                    <a href="{% url 'about' %}">Haqqımızda</a>
+                    <a href="{% url 'news' %}">Xəbərlər</a>
+                </nav>
+                <div class="burger-menu" onclick="toggleNav()">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-image">
+                <div class="hero-overlay">
+                    <h1 class="hero-title">Haqqımızda</h1>
+                    <p class="hero-subtitle">AI Dəstəkli Aqrar Analiz Platforması</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Sistemin Mahiyyəti</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Ağıllı Təhlil Sistemi</h3>
+                    <p>FarmAz platforması, fermerlərə müəyyən illər aralığındakı statistikanı analiz edərək maksimum gəlir əldə etməyə kömək edən AI dəstəkli bir sistemdir. Bizim sistemimiz fermer məhsullarının tarixi verilənlərini təhlil edərək gələcəkdəki trend və qiymət dəyişikliklərini proqnozlaşdırır.</p>
+                    <p>Fermerə maksimum dəstək verən sistemimiz, müxtəlif məhsulların statistikasını analiz edərək hansı məhsulun əlverişli olub-olmadığını dəqiq proqnoz verir. Bu sayədə fermerlər daha düşünülmüş qərarlar verə bilir və gəlirlərini artıra bilərlər.</p>
+                </div>
+                <div class="about-image"> 
+                    <img src="logo.png" alt="AI Analiz">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Sistemin İmkanları</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>İstatistik Təhlil</h4>
+                    <p>İllər aralığında məhsul istehsalı, qiymət dəyişikliyi və bazar tələbatının hərtərəfli analizi. Tarixi məlumatlar əsasında gələcək proqnozları hazırlanır.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h4>AI Dəstəkli Proqnoz</h4>
+                    <p>Süni intellekt alqoritmləri istifadə edərək hansı məhsulun əlverişli olacağını, hansı dövrdə satışa çıxarılmasının optimal olacağını müəyyənləşdirir.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h4>Maksimum Gəlir Hesablaması</h4>
+                    <p>Fermerə məhsul növü, əkin zamanı və satış strategiyası barədə tövsiyyələr verərək maksimum gəlir əldə etməyə kömək edir.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h4>Bazar Analizi</h4>
+                    <p>Real vaxtda bazar qiymətlərini izləyir, tələb-təklif tarazlığını analiz edir və optimal satışı müəyyən edir.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h4>Strategiya Planlaması</h4>
+                    <p>Qısa və uzunmüddətli kənd təsərrüfatı strategiyalarının hazırlanmasında fermerlərə peşəkar dəstək verir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-content">
+                <h3>Bizim Missiyamız</h3>
+                <p>Azərbaycan fermerlərinə ən son texnologiyalar və süni intellekt imkanları təqdim edərək kənd təsərrüfatının səmərəliliyini artırmaq və ölkəmizin ərzaq təhlükəsizliyinə töhfə vermək əsas məqsədimizdir.</p>
+                <p>Sistemimiz sayəsində fermerlər məhsuldarlığı artıraraq daha çox gəlir əldə edə bilər, ölkə iqtisadiyyatına daha böyük töhfə verə bilərlər. Gələcəkdə bütün fermerlərin rəqəmsal platformalardan istifadə edə bildiyi aqrar sektor yaratmaq istəyirik.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>FarmAZ</h4>
+                    <ul>
+                        <li><a href="haqqimizda.html">Haqqımızda</a></li>
+                        <li><a href="xeberler.html">Xəbərlər</a></li>
+                    </ul>
+                </div>                
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 FarmAz. Bütün hüquqlar qorunur. | Azərbaycanın #1 AI Dəstəkli Kənd Təsərrüfatı Platforması</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+
+        window.addEventListener('resize', function() {
+            const nav = document.getElementById('nav');
+            if (window.innerWidth > 768) {
+                nav.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

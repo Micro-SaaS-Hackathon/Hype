@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmAz - Təhsil Xəbərləri</title>
+    <link rel="icon" href="689ca7b0-31ad-4d1c-8f75-6f7ce3a99aaf.png">
+    <link rel="stylesheet" href="{% static 'xeberler.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="FarmAz.html" class="logo">
+                    <div class="logo-icon">F</div>
+                    FarmAz
+                </a>
+                <nav class="nav" id="nav">
+                    <a href="{% url 'index' %}">Ev</a>
+                    <a href="{% url 'about' %}">Haqqımızda</a>
+                    <a href="{% url 'news' %}">Xəbərlər</a>
+                    <a href="{% url 'login' %}" class="login-btn">Daxil Ol</a>
+                </nav>
+                <div class="burger-menu" onclick="toggleNav()">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-image">
+                <div class="hero-overlay">
+                    <h1 class="hero-title">Kənd təsərrüfatına aid xəbərlər</h1>
+                    <p class="hero-subtitle">Fermerlər üçün kənd təsərrüfatının analiz platforması</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cards-section">
+        <div class="container">
+            <h2 class="section-title">Son Xəbərlər</h2>
+            <div class="cards">
+                <div class="card" onclick="window.open('https://www.agro.gov.az/az/news/280820253', '_blank')">
+                    <div class="card-image" style="background-image: url(https://www.agro.gov.az/uploads/images/news/740x500/et5nB50lglmycFVk8lafmiMCzQs4PIm75Y1utHHg.jpg)">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date">Avqustun 30-31 </div>
+                        <h3 class="card-title">Bakıda növbəti “Kənddən Şəhərə” yarmarkası təşkil olunacaq</h3>
+                        <div class="card-source">Mənbə: ArgoNews</div>
+                        <div class="card-meta">
+                            <a href="https://www.agro.gov.az/az/news/280820253" class="login-btn" target="_blank">Oxu</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="window.open('https://www.agro.gov.az/az/news/280820251', '_blank')">
+                    <div class="card-image" style="background-image: url('https://www.agro.gov.az/uploads/images/news/740x500/FkiNzfEY0k4yPZvjvQfSDy6ZjCUxTeihY0wctI2I.png')">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date">16 Avqust, 2025</div>
+                        <h3 class="card-title">Kənd Təsərrüfatı Nazirliyində “Aqroparkların inkişafında yeni mərhələ” mövzusunda tədbir keçirilib</h3>
+                        <div class="card-source">Mənbə: ArgoNews</div>
+                        <div class="card-meta">
+                            <a href="https://www.agro.gov.az/az/news/280820251" class="login-btn" target="_blank">Oxu</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="window.open('https://www.agro.gov.az/az/news/290820251', '_blank')">
+                    <div class="card-image" style="background-image: url('https://www.agro.gov.az/uploads/images/news/740x500/2McYyYDIKqDkkCXIHeLOtdJzsAPoT2bNG0Hkecvs.jpeg')">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date">15 Avqust, 2025</div>
+                        <h3 class="card-title">Kənd Təsərrüfatı Nazirliyində Uqanda Respublikasının nümayəndə heyəti ilə görüş keçirilib</h3>
+                        <div class="card-source">Mənbə: ArgoNews</div>
+                        <div class="card-meta">
+                            <a href="https://dim.gov.az/az/metbuat/xeberler/22-iyunda-xarici-dil-fenleri-uzre-felsefe-doktoru-imtahaninda-muveffeqiyyet-elde-eden-sexslerin-sehadetnamelerinin-verilmesine-baslanilib" class="login-btn" target="_blank">Oxu</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" onclick="window.open('https://www.agro.gov.az/az/news/270825', '_blank')">
+                    <div class="card-image" style="background-image: url('https://www.agro.gov.az/uploads/images/news/740x500/jo7IYX5gyfIL2l4dIcGAfq2wecClUKvuF0fUgYFu.png')">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date">8 Sentyabr, 2025</div>
+                        <h3 class="card-title">Aqrar Sığorta Fondu bu ilin ilk yarısında 41 rayonda fermerlərə sığorta ödənişi edib</h3>
+                        <div class="card-source">Mənbə: ArgoNews</div>
+                        <div class="card-meta">
+                            <a href="https://dim.gov.az/az/metbuat/xeberler/22-iyunda-xarici-dil-fenleri-uzre-felsefe-doktoru-imtahaninda-muveffeqiyyet-elde-eden-sexslerin-sehadetnamelerinin-verilmesine-baslanilib" class="login-btn" target="_blank">Oxu</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" onclick="window.open('https://www.agro.gov.az/az/news/260820251', '_blank')">
+                    <div class="card-image" style="background-image: url('https://www.agro.gov.az/uploads/images/news/740x500/d4cTVxGaP40bXPuG2lCTgfXvWbXrtZouZ6Ix2nGw.jpg')">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date">11 Sentyabr, 2025</div>
+                        <h3 class="card-title">Aqrar Sığorta Fondu bu ilin ilk yarısında 41 rayonda fermerlərə sığorta ödənişi edib</h3>
+                        <div class="card-source">Mənbə: ArgoNews</div>
+                        <div class="card-meta">
+                            <a href="https://dim.gov.az/az/metbuat/xeberler/22-iyunda-xarici-dil-fenleri-uzre-felsefe-doktoru-imtahaninda-muveffeqiyyet-elde-eden-sexslerin-sehadetnamelerinin-verilmesine-baslanilib" class="login-btn" target="_blank">Oxu</a>
+                        </div>
+                    </div>
+                </div>
+                 <div class="card" onclick="window.open('https://www.agro.gov.az/az/news/010920251', '_blank')">
+                    <div class="card-image" style="background-image: url('https://www.agro.gov.az/uploads/images/news/740x500/YmIsldFCWGkJLmGONpbLMtAYaWqPExewyjNkgJ7S.PNG')">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-date">11 Sentyabr, 2025</div>
+                        <h3 class="card-title">Kənd Təsərrüfatı Nazirliyinin vəzifəli şəxslərinin sentyabr ayında bölgələrdə keçirəcəyi vətəndaş qəbullarının qrafiki təsdiqlənib</h3>
+                        <div class="card-source">Mənbə: ArgoNews</div>
+                        <div class="card-meta">
+                            <a href="https://dim.gov.az/az/metbuat/xeberler/22-iyunda-xarici-dil-fenleri-uzre-felsefe-doktoru-imtahaninda-muveffeqiyyet-elde-eden-sexslerin-sehadetnamelerinin-verilmesine-baslanilib" class="login-btn" target="_blank">Oxu</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>FarmAz</h4>
+                    <ul>
+                        <li><a href="haqqimizda.html">Haqqımızda</a></li>
+                        <li><a href="kamanda.html">Komandamız</a></li>
+                        <li><a href="xeberler.html">Xəbərlər</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 FarmAz. Bütün hüquqlar qorunur. | Azərbaycanın #1 Təhsil Platforması</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+
+        window.addEventListener('resize', function() {
+            const nav = document.getElementById('nav');
+            if (window.innerWidth > 768) {
+                nav.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
