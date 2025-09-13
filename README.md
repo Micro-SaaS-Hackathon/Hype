@@ -43,3 +43,15 @@ cp .env.example .env
 copy .env.example .env
 
 # Lazımi dəyişənləri .env faylında doldurun
+## 🚀 Layihəni işə salmaq
+
+```bash
+python manage.py migrate
+python manage.py runserver
+
+Sonra brauzerdə açın:
+👉 http://localhost:8000
+
+URL: http://localhost:8000/admin
+İstifadəçi adı: admin
+Parol: admin
