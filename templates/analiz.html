@@ -10,65 +10,78 @@
             <link rel="stylesheet" href="{% static 'analiz.css' %}">
         </head>
         <body>
+            <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="{% url 'index' %}" class="logo">
+                    <div class="logo-icon">F</div>
+                    FarmAZ
+                </a>
+                <nav class="nav" id="nav">
+                    <a href="{% url 'index' %}">Ev</a>
+                    <a href="{% url 'about' %}">Haqqımızda</a>
+                    <a href="{% url 'news' %}">Xəbərlər</a>
+                </nav>
+                <div class="burger-menu" onclick="toggleNav()">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </div>
+            </div>
+        </div>
+    </header>
             <main class="main-content">
+                
                 <div class="container">
+                    
                     <section class="text-display-section">
                         <h2 class="section-title">FarmAZ - Analiz Nəticələri</h2>
                         
                         <div class="text-container">
                             <div class="text-content">
-                                <p>Aydındır, kartof məhsulu üzrə təhlil və tövsiyələri hazırlayıram.</p>
-<p><strong>1. Ümumi Xülasə</strong></p>
+                                <p><strong>1. Ümumi Xülasə</strong></p>
 <ul>
-<li><strong>İlin əvvəlinə qalıq:</strong> 2007-2009-cu illər arasında qalıq miqdarında azalma müşahidə olunur, 2010-dan 2018-ə kimi dalğalanmalar var. 2018-dən 2023-ə doğru isə qalıq miqdarında artım müşahidə olunur.</li>
-<li><strong>İstehsal:</strong> 2007-2008-ci illərdə yüksək istehsal qeydə alınıb. 2009-2016-cı illər arasında istehsalda bir qədər azalma olsa da, 2017-2022-ci illərdə artım müşahidə olunur. 2023-də isə istehsal 2022-ci illə müqayisədə bir qədər azalıb.</li>
-<li><strong>İdxal:</strong> İdxal həcmi 2009-cu ildən 2021-ci ilə qədər ümumilikdə artım tendensiyası göstərir. 2022-ci ildə bir qədər azalma olsa da, 2023-də yenidən artıb.</li>
-<li><strong>Ehtiyatların cəmi:</strong> 2007-ci ildən 2010-cu ilə kimi ehtiyatlarda azalma, 2010-dan 2022-ci ilə kimi isə artım müşahidə olunur. 2023-də ehtiyatlar 2022-ci ilə nisbətən bir qədər azalıb.</li>
+<li><strong>İlin əvvəlinə qalıq:</strong> 2007-ci ildən 2016-cı ilə qədər azalma müşahidə olunsa da, sonrakı illərdə artmağa başlayıb və 2023-cü ildə ən yüksək səviyyəyə çatıb.</li>
+<li><strong>İstehsal:</strong> Ümumilikdə 2007-ci ildən 2023-cü ilə qədər artım tendensiyası müşahidə olunur, lakin illər arasında dalğalanmalar var. 2018-ci ildə kəskin azalma olsa da, sonrakı illərdə yenidən artım olub.</li>
+<li><strong>İdxal:</strong> 2009-cu ildən 2021-ci ilə qədər artım müşahidə olunur, lakin son iki ildə bir qədər azalma var.</li>
+<li><strong>Ehtiyatların cəmi:</strong> 2007-ci ildən 2015-ci ilə qədər azalma, sonrakı illərdə isə artım tendensiyası müşahidə olunur.</li>
 </ul>
 <p><strong>2. Proqnoz</strong></p>
 <ul>
-<li><strong>Qısa müddətli (2024 və yaxın 1-2 il):</strong> Kartof istehsalında sabitlik və ya bir qədər azalma ola bilər. İdxalın hələ də davam edəcəyi, lakin daxili istehsalın tələbatın böyük hissəsini qarşılayacağı gözlənilir. Qiymətlər sabit qala və ya inflyasiya səbəbindən bir az arta bilər.</li>
-<li><strong>Uzun müddətli (5 il):</strong> Kartof istehsalı texnologiyaların tətbiqi ilə arta bilər. İdxal daxili istehsalın artması ilə azala bilər. Ancaq, iqlim dəyişikliyi və su resurslarının azalması kimi faktorlar istehsalı mənfi təsir göstərə bilər.</li>
+<li><strong>Qısa müddətli:</strong> Kartof istehsalında və ehtiyatlarda son illərdə müşahidə olunan artım tendensiyası davam edə bilər. İdxalın bir qədər azalması daxili bazarda yerli məhsula tələbatı artıra bilər.</li>
+<li><strong>Uzun müddətli:</strong> 5 illik perspektivdə kartof istehsalının artımı davam edərsə, daxili bazar özünü tam təmin edə bilər və idxala olan ehtiyac azala bilər. Lakin, iqlim dəyişikliyi və xəstəliklər kimi riskləri də nəzərə almaq lazımdır.</li>
 </ul>
 <p><strong>3. İdxal və İstehsal Müqayisəsi</strong></p>
 <ul>
-<li>İdxal, daxili istehsalın çatışmadığı dövrlərdə bazarda tələbatı ödəmək üçün vacibdir. Həmçinin, idxal rəqabət yaratmaqla qiymətlərin sabit qalmasına kömək edir.</li>
-<li>Azərbaycanın daxili kartof istehsalı idxalı əvəz etmək potensialına malikdir. Yeni texnologiyalar, gübrələrin düzgün istifadəsi və daha məhsuldar sortların əkilməsi ilə istehsalı artırmaq mümkündür.</li>
+<li>İdxal daxili bazarda tələbatı qismən ödəməkdə və qiymətləri sabit saxlamaqda rol oynayır. Lakin daxili istehsalın həcmi daha böyükdür və idxaldan asılılığı azaltmaq potensialı var. Yerli istehsalın artırılması, idxalı tamamilə əvəz edə bilər, bu da yerli fermerlər üçün yeni imkanlar yaradacaq.</li>
+<li>İdxalı əvəz etmək üçün yerli istehsalın keyfiyyətini artırmaq, müasir texnologiyalardan istifadə etmək və saxlama şəraitini yaxşılaşdırmaq lazımdır.</li>
 </ul>
 <p><strong>4. Ehtiyatların Bazara Təsiri</strong></p>
 <ul>
-<li><strong>Yüksək ehtiyat səviyyəsi:</strong> Məhsulun qiymətinin aşağı düşməsinə səbəb ola bilər, çünki təklif tələbi üstələyir. Bu, fermerlərin gəlirlərini azalda bilər.</li>
-<li><strong>Aşağı ehtiyat səviyyəsi:</strong> Qiymətlərin artmasına səbəb ola bilər, çünki tələb təklifi üstələyir. Bu, fermerlər üçün gəlir artımı demək ola bilər, lakin istehlakçılar üçün mənfi təsir göstərə bilər.</li>
-<li>Fermerlər üçün optimal ehtiyat səviyyəsini qorumaq vacibdir. Bunun üçün dəqiq proqnozlaşdırma və bazar təhlili aparılmalıdır.</li>
+<li>Yüksək ehtiyat səviyyəsi bazarda təklifin çox olmasına səbəb olur və qiymətlərin aşağı düşməsinə gətirib çıxara bilər. Aşağı ehtiyat səviyyəsi isə qiymətlərin artmasına səbəb ola bilər. Orta ehtiyat səviyyəsi bazar üçün ən ideal vəziyyətdir.</li>
+<li>Yüksək ehtiyat səviyyəsində fermer məhsulunu daha tez satmaq məcburiyyətində qala bilər və bu da gəlirini azalda bilər. Aşağı ehtiyat səviyyəsində isə fermer daha yüksək qiymətlərlə satış edə bilər, lakin məhsul çatışmazlığı riski də mövcuddur.</li>
 </ul>
-<p><strong>5. Fermer üçün tövsiyələr</strong></p>
-<p>Nəzərə alsaq ki, sizin 3 hektar gil torpağınız var və bölgənizin iqlimi qurudur, kartof əkmək riskli ola bilər. Gil torpaq suyu yaxşı saxlayır, lakin drenajı zəifdir. Quru iqlimdə isə suvarma tələbatı yüksək olacaq.</p>
+<p><strong>5. Fermer üçün tövsiyə</strong></p>
 <ul>
-<li><strong>Sərfəli şərtlər:</strong> Əgər kartofun qiyməti yüksəkdirsə (3 AZN-dən yuxarı) və rəqabət aşağıdırsa (idxal azdırsa), əkin sərfəli ola bilər. Həmçinin, dövlət tərəfindən subsidiyalar və güzəştlər varsa, risklər azala bilər.</li>
-<li><strong>Riskli şərtlər:</strong> Əgər idxal çoxdursa və qiymətlər aşağıdırsa (3 AZN-dən aşağı), əkin riskli ola bilər. Gil torpaqda kartof yetişdirmək suvarma və drenaj sistemlərinə investisiya tələb edəcək.</li>
+<li>Sizin 3 hektar əkin sahəniz, gil torpağınız və mülayim iqlim şəraitiniz kartof əkmək üçün əlverişlidir. Statistik məlumatlara əsasən, kartof istehsalı artmaqdadır, bu da bazarda rəqabətin artması deməkdir. Orta qiymət də nəzərə alınsa, bu məhsulu əkmək həm sərfəli, həm də riskli ola bilər.</li>
+<li>Əgər qiymətlər yüksək olsa və rəqabət aşağı olsa, əkin daha sərfəli ola bilər. Əksinə, idxalın çoxluğu və qiymətlərin aşağı düşməsi riskləri artırır.</li>
 <li><strong>Məsləhətlər:</strong><ul>
-<li>Suvarma sistemlərinə investisiya qoyun (damcı suvarma).</li>
-<li>Torpağın drenajını yaxşılaşdırın.</li>
-<li>Daha məhsuldar və xəstəliklərə davamlı kartof sortları əkin.</li>
-<li>Məhsulunuzu saxlamaq üçün anbarınız varsa, qiymətlər yüksələnə qədər gözləyin.</li>
-<li>Alternativ məhsullar (quru iqlimə davamlı) əkməyi düşünün.</li>
+<li>Məhsulunuzu saxlama anbarında saxlayıb qiymət artanda satmaq daha sərfəli ola bilər.</li>
+<li>Keyfiyyətli toxumdan istifadə edin və müasir əkinçilik texnologiyalarını tətbiq edin.</li>
+<li>Suvarma sisteminizi təkmilləşdirin və torpağınızın münbitliyini qoruyun.</li>
+<li>Bazarda qiymətləri və tələbatı izləyin.</li>
+<li>Alternativ məhsullar (məsələn, erkən yetişən tərəvəzlər) əkmək imkanlarını da dəyərləndirin.</li>
+<li>Dövlət tərəfindən təklif olunan subsidiyalardan və güzəştlərdən faydalanın.</li>
 </ul>
 </li>
 </ul>
-<p><strong>6. Qısa və uzunmüddətli nəticə</strong></p>
+<p><strong>6. Qısa və Uzunmüddətli Nəticə</strong></p>
 <ul>
-<li><strong>Qısa müddətli:</strong> Kartof bazarında qiymət dəyişiklikləri və rəqabətə diqqət yetirin. Suvarma və drenaj sistemlərini yaxşılaşdırmaqla məhsuldarlığı artırmağa çalışın.</li>
-<li><strong>Uzun müddətli:</strong> İqlim dəyişikliyi və bazar şərtlərinə uyğunlaşmaq üçün alternativ məhsullar əkməyi və ya yeni texnologiyalar tətbiq etməyi düşünün.</li>
+<li><strong>Qısa müddətli:</strong> Kartof bazarında rəqabət yüksək olacaq, qiymətlər dalğalanmağa davam edəcək. Fermerlər məhsullarını saxlamaq və qiymət artımını gözləmək strategiyasını seçə bilərlər.</li>
+<li><strong>Uzun müddətli:</strong> Daxili istehsalın artımı idxaldan asılılığı azaldacaq, lakin fermerlər bazar şəraitinə uyğunlaşmaq və keyfiyyətli məhsul istehsal etmək üçün səy göstərməlidirlər.</li>
 </ul>
-<p><strong>7. Təxmini gəlir</strong></p>
-<p>Sizin 3 hektar torpağınız olduğunu nəzərə alsaq, orta məhsuldarlıq və 3 AZN qiymət ilə təxmini gəlir aralığı aşağıdakı kimi ola bilər:</p>
-<ul>
-<li><strong>Aşağı məhsuldarlıq:</strong> 3 hektar x 20 ton/hektar x 3 AZN/kq = 180,000 AZN</li>
-<li><strong>Orta məhsuldarlıq:</strong> 3 hektar x 25 ton/hektar x 3 AZN/kq = 225,000 AZN</li>
-<li><strong>Yüksək məhsuldarlıq:</strong> 3 hektar x 30 ton/hektar x 3 AZN/kq = 270,000 AZN</li>
-</ul>
-<p>Qeyd: Bu, yalnız təxmini gəlirdir və xərcləri (toxum, gübrə, suvarma, əmək haqqı və s.) nəzərə almır.</p>
-<p>Ümid edirəm, bu təhlil sizin üçün faydalı oldu.</p>
+<p><strong>7. Təxmini Gəlir</strong></p>
+<p>Sizin 3 hektar sahənizdən, kartofun orta qiyməti (34 AZN/ton) və istehsal həcmi nəzərə alınaraq, təxmini gəlir aralığınız 50.000 - 80.000 AZN arasında ola bilər. Lakin, bu rəqəm məhsuldarlıqdan, qiymətlərdən və xərclərdən asılı olaraq dəyişə bilər.</p>
                             </div>
                         </div>
                     </section>

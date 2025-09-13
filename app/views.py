@@ -43,7 +43,7 @@ def analyse(request, category):
     qiymet = request.POST.get("qiymet")
     iqlim = request.POST.get("iqlim")
     
-    anl.analyse(category, sahe, torpaq, qiymet, iqlim)
+    # anl.analyse(category, sahe, torpaq, qiymet, iqlim)
 
     UserStatistic.objects.create(
         user = user,

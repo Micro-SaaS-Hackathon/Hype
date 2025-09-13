@@ -12,6 +12,28 @@
 </head>
 
 <body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="{% url 'index' %}" class="logo">
+                    <div class="logo-icon">F</div>
+                    FarmAZ
+                </a>
+                <nav class="nav" id="nav">
+                    <a href="{% url 'index' %}">Ev</a>
+                    <a href="{% url 'about' %}">Haqqımızda</a>
+                    <a href="{% url 'news' %}">Xəbərlər</a>
+                </nav>
+                <div class="burger-menu" onclick="toggleNav()">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
     <div class="container">
         <div class="header">
             <h1>FarmAz Statistika Paneli</h1>
@@ -67,7 +89,7 @@
                     </div>
                     <div class="form-grid">
 
-                        <div class="grid-item">
+                        <div class="grid-item"> 
                             <label for="s3">Ad və Soyad</label>
                             <input name="user" type="text" id="s3">
                         </div>
