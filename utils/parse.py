@@ -48,7 +48,7 @@ def parse():
                 </div>
 
                 <div class="footer-bottom">
-                    <p>&copy; 2024 FarmAz. Bütün hüquqlar qorunur. | Azərbaycanın #1 AI Dəstəkli Kənd Təsərrüfatı Platforması</p>
+                    <p>&copy; 2025 FarmAz. Bütün hüquqlar qorunur. | Azərbaycanın #1 AI Dəstəkli Kənd Təsərrüfatı Platforması</p>
                 </div>
             </div>
         </footer>
