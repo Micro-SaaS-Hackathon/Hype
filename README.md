@@ -1,4 +1,4 @@
-# 🌱 FarmAz
+# 🌱 FarmAz (farmaz.info)
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![Django](https://img.shields.io/badge/Django-4.0+-green.svg)
