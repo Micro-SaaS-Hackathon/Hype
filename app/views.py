@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from utils import analyse as anl
+from app.models import UserStatistic
 
 def index(request):
     return render(request, "index.html")
@@ -35,13 +36,23 @@ def login(request):
     return render(request, "daxil.html")
 
 def analyse(request, category):
-
+    user = request.POST.get("user")
+    region = request.POST.get("region")
     sahe = request.POST.get("sahe")
     torpaq = request.POST.get("torpaq")
     qiymet = request.POST.get("qiymet")
     iqlim = request.POST.get("iqlim")
     
     anl.analyse(category, sahe, torpaq, qiymet, iqlim)
+
+    UserStatistic.objects.create(
+        user = user,
+        region = region,
+        field = sahe,
+        soil_type = torpaq,
+        avarage_price = qiymet,
+        climate_class = iqlim
+    )
 
     context = {
         "category": category

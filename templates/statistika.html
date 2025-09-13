@@ -62,7 +62,37 @@
             <form method="post" action="{% url 'analyse' category=category %}">
                 {% csrf_token %}
                 <div class="sectionbody">
+                    <div>
+                        <p>Süni intellekt əsaslı fermer məlumat analizi</p>
+                    </div>
                     <div class="form-grid">
+
+                        <div class="grid-item">
+                            <label for="s3">Ad və Soyad</label>
+                            <input name="user" type="text" id="s3">
+                        </div>
+
+                        <div class="grid-item">
+                            <label for="region">Region</label>
+                            <select name="region" id="region" required>
+                                <option value="">Seçin</option>
+                                <option value="baki">Bakı şəhəri</option>
+                                <option value="absheron-xizi">Abşeron–Xızı</option>
+                                <option value="dagliq-sirvan">Dağlıq Şirvan</option>
+                                <option value="quba-xacmaz">Quba–Xaçmaz</option>
+                                <option value="seki-zaqatala">Şəki–Zaqatala</option>
+                                <option value="lenkeran-astara">Lənkəran–Astara</option>
+                                <option value="qarabag">Qarabağ</option>
+                                <option value="serqi-zengazur">Şərqi Zəngəzur</option>
+                                <option value="mil-mugan">Mil–Muğan</option>
+                                <option value="merkezi-aran">Mərkəzi Aran</option>
+                                <option value="naxcivan">Naxçıvan MR</option>
+                                <option value="gence-daskesen">Gəncə–Daşkəsən</option>
+                                <option value="qazax-tovuz">Qazax–Tovuz</option>
+                                <option value="sirvan-salyan">Şirvan–Salyan</option>
+                            </select>
+                            </div>
+
                         <div class="grid-item">
                             <label for="s1">Ümumi sahə (hektar ilə)</label>
                             <input name="sahe" type="number" id="s1">
@@ -118,9 +148,6 @@
                     </div>
                 </center> 
             </form>
-            
-            
-            
         </div>
     </div>
 

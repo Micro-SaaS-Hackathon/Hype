@@ -495,3 +495,20 @@ input:focus, select:focus {
     grid-template-columns: 1fr;
   }
 }
+
+.sectionbody > div:first-child {
+    background: linear-gradient(135deg, #fffcfc, #2E7D32);
+    color: #000000;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+}
+
+.sectionbody > div:first-child p {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
